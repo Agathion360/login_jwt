@@ -1,0 +1,129 @@
+[
+  {
+    "title": "pantalon",
+    "description": "pantalon de algodón",
+    "price": 5000,
+    "thumbnail": "./img/pantalon.jpg",
+    "code": 34,
+    "stock": 50,
+    "id": 1
+  },
+  {
+    "title": "Camisa",
+    "description": "Camisa a cuadros de algodón",
+    "price": 8000,
+    "thumbnail": "./img/camisa25.jpg",
+    "code": 124,
+    "stock": 10,
+    "id": 2
+  },
+  {
+    "title": "Chomba Pique",
+    "description": "Chomba pique de algodon, con cuello y puños de ribb.",
+    "price": 12000,
+    "thumbnail": "./img/chpique.jpg",
+    "code": 244,
+    "stock": 45,
+    "id": 3
+  },
+  {
+    "title": "Jean Azul",
+    "description": "Jean de algodón en color azul",
+    "price": 6500,
+    "thumbnail": "./img/jean.jpg",
+    "code": 437,
+    "stock": 30,
+    "id": 4
+  },
+  {
+    "title": "Campera de Cuero",
+    "description": "Campera de cuero genuino, estilo vintage",
+    "price": 13500,
+    "thumbnail": "./img/campera.jpg",
+    "code": 589,
+    "stock": 12,
+    "id": 5
+  },
+  {
+    "title": "Vestido de Noche",
+    "description": "Elegante vestido de noche para ocasiones especiales",
+    "price": 9500,
+    "thumbnail": "./img/vestido.jpg",
+    "code": 773,
+    "stock": 20,
+    "id": 6
+  },
+  {
+    "title": "Zapatillas Deportivas",
+    "description": "Zapatillas ideales para actividades deportivas",
+    "price": 4500,
+    "thumbnail": "./img/zapatillas.jpg",
+    "code": 326,
+    "stock": 40,
+    "id": 7
+  },
+  {
+    "title": "Sombrero de Verano",
+    "description": "Sombrero de ala ancha para protegerse del sol",
+    "price": 2500,
+    "thumbnail": "./img/sombrero.jpg",
+    "code": 824,
+    "stock": 15,
+    "id": 8
+  },
+  {
+    "title": "Sweater de Lana",
+    "description": "Sweater de lana suave y abrigado",
+    "price": 7800,
+    "thumbnail": "./img/sweater.jpg",
+    "code": 192,
+    "stock": 25,
+    "id": 9
+  },
+  {
+    "title": "Shorts de Playa",
+    "description": "Shorts cómodos para la playa o la piscina",
+    "price": 3500,
+    "thumbnail": "./img/shorts.jpg",
+    "code": 621,
+    "stock": 35,
+    "id": 10
+  },
+  {
+    "title": "Blusa Estampada",
+    "description": "Blusa con estampado floral, ideal para primavera",
+    "price": 5200,
+    "thumbnail": "./img/blusa.jpg",
+    "code": 467,
+    "stock": 18,
+    "id": 11
+  },
+  {
+    "title": "Gorra de Béisbol",
+    "description": "Gorra de béisbol clásica, ajustable",
+    "price": 1800,
+    "thumbnail": "./img/gorra.jpg",
+    "code": 835,
+    "stock": 50,
+    "id": 12
+  },
+  {
+    "title": "Pijama de Seda",
+    "description": "Pijama de seda suave y lujosa para la noche",
+    "price": 6900,
+    "thumbnail": "./img/pijama.jpg",
+    "code": 591,
+    "stock": 10,
+    "id": 13
+  },
+  {
+    "title": "Chomba Piquet rayada",
+    "description": "Chomba piquet, rayada. TOMY",
+    "price": 8700,
+    "thumbnail": "./img/chpiqTomy.jpg",
+    "code": 3454,
+    "stock": 50,
+    "status": true,
+    "id": 14
+  }
+]

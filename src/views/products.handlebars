@@ -1,0 +1,48 @@
+<style>
+    .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.align-self-end {
+    align-self: flex-end;
+}
+.text-right {
+    text-align: right;
+}
+</style>
+
+
+
+<div class="container d-flex justify-content-between mt-2 flex-column">
+    <h3 class="align-self-start">{{title}}</h3>
+    <div class="align-self-end text-right">
+        <p>Bienvenido, <strong>{{email}}</strong>.</p>
+        <p>Rol: <strong>{{role}}</strong></p>
+    </div>
+    <form action="/api/sessions/logout" method="GET" class="align-self-end">
+        <button type="submit" class="btn btn-success">Logout</button>
+    </form>
+</div>
+
+
+
+
+
+<div class="container">
+    <div class="row products-container" id="productsContainer"></div>
+</div>
+
+<div class="container mt-3">
+    <div class="d-flex justify-content-center">
+        {{#if totalPages}}
+            {{#if hasPrevPage}}
+                <button id="prevPageBtn" class="btn btn-primary me-2">Página anterior</button>
+            {{/if}}
+            {{#if hasNextPage}}
+                <button id="nextPageBtn" class="btn btn-primary">Página siguiente</button>
+            {{/if}}
+        {{/if}}
+    </div>
+</div>
