@@ -5,7 +5,7 @@ const router = Router();
 const controller = new CartsController();
 
 router.get('/cart', async (req, res) => {
-    const products = await controller.getProducts();
+    const products = await controller.getCarts();
     res.render('carts', {
         title: 'Carrito de compras',
         rutaJs: 'carts',

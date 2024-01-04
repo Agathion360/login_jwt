@@ -1,16 +1,17 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import handlebars from 'express-handlebars';
+import { Server } from 'socket.io';
 import session from 'express-session'
 import FileStore from 'session-file-store'
 import MongoStore from 'connect-mongo'
+import passport from 'passport'
 
+import { __dirname } from './utils.js';
 import productRouter from './dao/routes/products.routes.js';
 import carts from './dao/routes/carts.routes.js';
 import Carts from './dao/models/carts.models.js';
 import path from 'path';
-import { __dirname } from './path.js';
-import { Server } from 'socket.io';
 import productsModel from './dao/models/products.model.js';
 import viewRouter from './dao/routes/products.views.routes.js';
 import cartViews from './dao/routes/carts.views.routes.js';
@@ -44,6 +45,10 @@ app.use(session({
     resave: false,
     saveUninitialized: false
 }))
+
+app.use(passport.initialize())
+app.use(passport.session())
+
 
 
 app.use((req, res, next) => {
