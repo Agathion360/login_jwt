@@ -3,16 +3,12 @@ import passport from 'passport'
 
 
 import userModel from '../models/user.models.js'
-import { createHash, isValidPassword, generateToken } from '../../utils.js'
+import { createHash, isValidPassword, generateToken } from '../utils.js'
 import initPassport from '../config/passport.config.js'
 
-// import SessionsController from '../controllers/sessions.controller.js'
-// import RegisterController from '../controllers/register.controller.js';
 
 initPassport()
 const router = Router()
-// const sessionsController = new SessionsController();
-// const registerController = new RegisterController();
 
 
 const auth = (req, res, next) => {
@@ -95,27 +91,10 @@ router.get('/github', passport.authenticate('githubAuth', { scope: ['user:email'
 
 router.get('/githubcallback', passport.authenticate('githubAuth', { failureRedirect: '/login' }), async (req, res) => {
     req.session.user = { username: req.user.email, admin: true }
-    // req.session.user = req.user
     res.redirect('/profile')
 })
 
 
-// router.post('/login', async (req, res) => {
-//     try {
-//         const { email, pass } = req.body
-
-//         const userInDb = await userModel.findOne({ email: email })
-//         if (userInDb !== null && isValidPassword(userInDb, pass)) {
-
-//             const access_token = generateToken({ username: email, admin: true }, '1h')
-//             res.redirect(`/profilejwt?access_token=${access_token}`)
-//         } else {
-//             res.status(401).send({ status: 'ERR', data: 'Datos no válidos' })
-//         }
-//     } catch (err) {
-//         res.status(500).send({ status: 'ERR', data: err.message })
-//     }
-// })
 
 
 
@@ -124,28 +103,25 @@ router.post('/login', async (req, res) => {
     try {
         const { email, pass } = req.body
 
-        // Fundamental!!!: los datos de req.session se almacenan en SERVIDOR, NO en navegador.
-        // Pronto cambiaremos este control hardcoded por el real desde base de datos.
 
         const userInDb = await userModel.findOne({ email: email })
         if (userInDb !== null && isValidPassword(userInDb, pass)) {
-            // Utilizando sessions
-            // req.session.user = { username: email, admin: true }
-            // De nuevo, podemos directamente redireccionar una vez que el usuario se identificó correctamente.
-            // res.status(200).send({ status: 'OK', data: 'Sesión iniciada' })
-            // res.redirect('/profile')
-
-            // Utilizando tokens JWT
-            const access_token = generateToken({ username: email, admin: true }, '1h')
-            // res.status(200).send({ status: 'OK', data: access_token })
-            res.redirect(`/profilejwt?access_token=${access_token}`)
+            const access_token = generateToken({ username: email, admin: true }, '1h');
+            res.redirect(`/profilejwt?access_token=${access_token}`);
         } else {
-            res.status(401).send({ status: 'ERR', data: 'Datos no válidos' })
+            console.log('Credenciales incorrectas');
+            res.status(401).send({ status: 'ERR', data: 'Datos no válidos' });
         }
-    } catch (err) {
-        res.status(500).send({ status: 'ERR', data: err.message })
+    } catch (error) {
+        console.error('Error durante el proceso de autenticación:', error);
+        res.status(500).send({ status: 'ERR', data: 'Error interno del servidor' });
     }
-})
+});
+
+
+
+
+
 
 router.post('/register', passport.authenticate('registerAuth', { failureRedirect: '/api/sessions/failregister' }), async (req, res) => {
     try {

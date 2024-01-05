@@ -1,5 +1,4 @@
 // import { fileURLToPath } from 'url';
-import { dirname } from 'path';
 import * as url from 'url'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
@@ -16,14 +15,21 @@ export const isValidPassword = (user, password) => bcrypt.compareSync(password, 
 
 export const generateToken = (user, duration) => jwt.sign({ user }, PRIVATE_KEY, { expiresIn: duration })
 
+
+
 export const authToken = (req, res, next) => {
-    const receivedToken = req.headers.authorization !== undefined ? req.headers.authorization.split(' ')[1] : req.query.access_token
-    // if (!receivedToken) return res.status(401).send({ status: 'ERR', data: 'No autenticado' })
-    if (!receivedToken) return res.redirect('/login')
+
+    const receivedToken = req.headers.authorization !== undefined ? req.headers.authorization.split(' ')[1] : req.query.access_token;
+    
+    if (!receivedToken) {
+        return res.redirect('/login');
+    }
 
     jwt.verify(receivedToken, PRIVATE_KEY, (err, credentials) => {
-        if (err) return res.status(403).send({ status: 'ERR', data: 'No autorizado' })
-        req.user = credentials.user
-        next()
-    })
-}
+        if (err) {
+            return res.redirect('/login');
+        }
+        req.user = credentials.user;
+        next();
+    });
+};

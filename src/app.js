@@ -8,20 +8,18 @@ import MongoStore from 'connect-mongo'
 import passport from 'passport'
 
 import { __dirname } from './utils.js';
-import productRouter from './dao/routes/products.routes.js';
-import carts from './dao/routes/carts.routes.js';
-import Carts from './dao/models/carts.models.js';
+import productRouter from './routes/products.routes.js';
+import Carts from './models/carts.models.js';
 import path from 'path';
-import productsModel from './dao/models/products.model.js';
-import viewRouter from './dao/routes/products.views.routes.js';
-import cartViews from './dao/routes/carts.views.routes.js';
-import chatRouter from './dao/routes/chat.routes.js';
-import ChatMessage from './dao/models/chat.models.js';
-import usersRouter from './dao/routes/users.routes.js';
-import ProfileController from './dao/controllers/profile.controller.js';
-import registerRoutes from './dao/routes/register.routes.js';
-import registerViews from './dao/routes/register.views.routes.js';
-import sessionRoutes from './dao/routes/sessions.routes.js';
+import productsModel from './models/products.model.js';
+import viewRouter from './routes/views.routes.js';
+import cartsRouter from './routes/carts.routes.js';
+import chatRouter from './routes/chat.routes.js';
+import ChatMessage from './models/chat.models.js';
+import ProfileController from './controllers/profile.controller.js';
+import registerRoutes from './routes/register.routes.js';
+import registerViews from './routes/register.views.routes.js';
+import sessionRoutes from './routes/sessions.routes.js';
 
 
 
@@ -77,16 +75,11 @@ app.set('view engine', 'handlebars')
 
 
 app.use('/', viewRouter)
-app.use('/', cartViews)
 app.use('/', chatRouter)
-app.use('/', registerViews)
-app.get('/profile', profileController.showProfile);
 
 
-
-app.use('/api/carts',carts)
+app.use('/api/carts', cartsRouter)
 app.use('/api/products', productRouter)
-app.use('/api/users', usersRouter)
 app.use('/api/sessions', sessionRoutes);
 app.use('/api/register', registerRoutes); 
 app.get('/profile', auth, profileController.showProfile);
